@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+<h1>我是你爹</h1>
+<h2>{{ res.name }}</h2>
+<h3>{{ res.project.name }}</h3>
+
+{% for i in tag %}
+    <p>{{ i }}</p>
+{% endfor %}
+
+<button id="post">post</button>
+<button id="get">get</button>
+<div></div>
+
+<button id="rdfget">rdfget</button>
+<button id="rdfpost">rdfpost</button>
+<div></div>
+
+<button id="serget">serget</button>
+<button id="serpost">serpost</button>
+
+<script src="/static/jquery-3.3.1.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $.ajax({
+        url: "/test/",
+        type: "post",
+        data: {"key": "value", "key2": [1,2,3]},
+        success: function (arg) {
+            // 请求得到响应的时候，自动执行这个回调函数
+            console.log(arg);
+        }
+    });
+
+
+
+        // 绑定btnAjax的click事件
+    $('#post').click(function () {
+            $.ajax({
+                url: '/cbvtest/',
+                type:'post',
+                contentType:'form-data',
+                data:{'name':'wjx'},
+                success:function (data) {
+
+                alert(data);
+        }
+    })});
+
+    $('#get').click(function () {
+            $.ajax({
+                url: '/cbvtest/',
+                type:'get',
+                data:{'name':'wjx'},
+                success:function (data) {
+
+                alert(data);
+        }
+    })});
+
+    $('#rdfget').click(function () {
+            $.ajax({
+                url: '/rdftest/',
+                type:'get',
+                data:{'name':'wjx'},
+                success:function (data) {
+
+                alert(data);
+        }
+    })});
+
+    $('#rdfpost').click(function () {
+            $.ajax({
+                url: '/rdftest/',
+                type:'post',
+                data:{'name':'wjx'},
+                success:function (data) {
+
+                alert(data);
+        }
+    })});
+    $('#serget').click(function () {
+            $.ajax({
+                url: '/sertest/',
+                type:'get',
+                data:{'name':'wjx'},
+                success:function (data) {
+                console.log(data)
+        }
+    })});
+
+    $('#serpost').click(function () {
+            $.ajax({
+                url: '/sertest/',
+                type:'post',
+                data:{'name':'wjx'},
+                success:function (data) {
+
+                alert(data);
+        }
+    })});
+
+
+</script>
+
+</body>
+</html>
